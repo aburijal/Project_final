@@ -9,6 +9,7 @@ include "connect.php";
         if($hasil){
             $_SESSION['username_kantinkampus'] = $username;
             $_SESSION['level_kantinkampus'] = $hasil['level'];
+            $_SESSION['id_kantinkampus'] = $hasil['id'];
             header('location:../home');
         }else{?>
             <script>

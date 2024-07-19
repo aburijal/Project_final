@@ -12,7 +12,7 @@ if (!empty($_POST['input_menu_validate'])) {
         $message = '<script>alert("Nama menu yang anda masukkan sudah ada");
         window.location="../menu"</script>';
     } else {
-        $query = mysqli_query($conn, "INSERT INTO tb_menu (nama_menu,kategori,harga) VALUES ('$nama_menu','$kategori','$harga')");
+        $query = mysqli_query($conn, "UPDATE tb_menu SET nama_menu='$nama_menu' , kategori='$kategori' , harga='$harga' WHERE id='$id'");
         if (!$query) {
             $message = '<script>alert("Data gagal dimasukkan");
         window.location="../menu"</script>';

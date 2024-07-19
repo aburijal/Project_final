@@ -36,6 +36,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required>
@@ -44,6 +45,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                 Masukkan Username.
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -19,14 +19,17 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('path-to-your-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -105,8 +108,6 @@
         }
     </style>
 
-
-    <!-- Custom styles for this template -->
     <link href="assets/css/login.css" rel="stylesheet">
 </head>
 
@@ -171,49 +172,46 @@
         </ul>
     </div>
 
-
     <main class="form-signin w-100 m-auto">
-        <form class="needs-validation" novalidate action="proses/proses_login.php" method="POSt">
+        <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
             <i class="bi bi-box-arrow-in-right"></i>
             <i class="bi bi-cup-straw fs-1"></i>
-            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+            <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
 
             <div class="form-floating">
                 <input name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Email address</label>
+                <label for="floatingInput">Alamat Email</label>
                 <div class="invalid-feedback">
                     Masukkan email yang valid.
                 </div>
             </div>
             <div class="form-floating">
-                <input name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                <label for="floatingPassword">Password</label>
+                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <label for="floatingPassword">Kata Sandi</label>
                 <div class="invalid-feedback">
-                    Password salah.
+                    Kata sandi salah.
                 </div>
             </div>
 
             <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Remember me
+                    Ingat Saya
                 </label>
             </div>
-            <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2014–2025</p>
+            <button class="btn btn-warning w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
         </form>
     </main>
 
-
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        // Contoh JavaScript awal untuk menonaktifkan pengiriman formulir jika ada kolom yang tidak valid
         (() => {
             'use strict'
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            // Ambil semua formulir yang ingin kita terapkan gaya validasi Bootstrap kustom
             const forms = document.querySelectorAll('.needs-validation')
 
-            // Loop over them and prevent submission
+            // Loop melalui formulir dan cegah pengiriman
             Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
                     if (!form.checkValidity()) {

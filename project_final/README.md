@@ -24,10 +24,11 @@ memiliki beberapa level pengguna:
     -Daftar Menu    
     -Pemesanan
     -User
-    -Report
+    -Dapur
 ## Pengelola Kantin (2)
     -Daftar Menu
     -Pemesanan
+    -Dapur
 ## Mahasiswa dan Staf (3)
     -Pemesanan
     -Daftar Menu

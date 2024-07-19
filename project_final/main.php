@@ -21,7 +21,7 @@
 
 <body>
     <?php include "header.php"; ?>
-    <div class="container-lg">
+    <div class="container-lg mb-5">
         <div class="row">
             <?php include "sidebar.php"; ?>
             <?php
