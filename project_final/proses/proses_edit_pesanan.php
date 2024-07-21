@@ -7,7 +7,7 @@ $catatan = (isset($_POST['catatan'])) ? mysqli_real_escape_string($conn, $_POST[
 if (!empty($_POST['edit_pesanan_validate'])) {
     $select = mysqli_query($conn, "SELECT * FROM tb_pemesanan WHERE id_pesanan = '$kode_pesanan'");
     
-        $query = mysqli_query($conn, "UPDATE tb_pemesanan SET pelanggan='$pelanggan', catatan='$catatan' WHERE id_pesanan='$kode_pesanan'");
+        $query = mysqli_query($conn, "UPDATE tb_pemesanan SET pelanggan='$pelanggan' WHERE id_pesanan='$kode_pesanan'");
         if ($query) {
             $message = '<script>alert("Data berhasil dimasukkan");
                         window.location="../pemesanan"</script>';

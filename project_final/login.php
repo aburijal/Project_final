@@ -1,13 +1,18 @@
 <?php
-    //session_start();
-    if(!empty ($_SESSION['username_kantinkampus'])){
-        header('location:home');
-    }
+// Memulai sesi
+// session_start();
+
+// Mengecek apakah username_kantinkampus sudah ada di dalam sesi
+if (!empty($_SESSION['username_kantinkampus'])) {
+    // Jika ada, redirect ke halaman 'home'
+    header('location:home');
+}
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
 <head>
+    <!-- Menghubungkan script JavaScript untuk pengaturan warna tema -->
     <script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
@@ -17,75 +22,48 @@
     <meta name="generator" content="Hugo 0.122.0">
     <title>KantinKampus</title>
 
+    <!-- Menghubungkan ke Bootstrap 5.3.3 via CDN -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        /* Mengatur gaya latar belakang halaman */
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('path-to-your-image.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path-to-your-image.jpg');
             background-size: cover;
             background-position: center;
+            font-family: 'Roboto', sans-serif;
         }
 
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
+        /* Mengatur gaya form sign-in */
+        .form-signin {
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            width: 100%;
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
+        .form-signin .form-floating:focus-within {
             z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
         }
 
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+        .form-signin input[type="email"],
+        .form-signin input[type="password"] {
+            border-radius: 0;
         }
 
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+        }
+
+        /* Mengatur gaya tombol */
         .btn-bd-primary {
             --bd-violet-bg: #712cf9;
             --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
             --bs-btn-font-weight: 600;
             --bs-btn-color: var(--bs-white);
             --bs-btn-bg: var(--bd-violet-bg);
@@ -97,6 +75,17 @@
             --bs-btn-active-color: var(--bs-btn-hover-color);
             --bs-btn-active-bg: #5a23c8;
             --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            border-color: #eea236;
+            font-weight: bold;
+        }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+            border-color: #d58512;
         }
 
         .bd-mode-toggle {
@@ -112,6 +101,7 @@
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <!-- Simbol SVG untuk ikon -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
@@ -128,6 +118,7 @@
         </symbol>
     </svg>
 
+    <!-- Dropdown untuk mengubah tema -->
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
         <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -172,20 +163,26 @@
         </ul>
     </div>
 
+    <!-- Form login -->
     <main class="form-signin w-100 m-auto">
+        <!-- Form dengan validasi -->
         <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <i class="bi bi-cup-straw fs-1"></i>
-            <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
+            <div class="text-center mb-4">
+                <i class="bi bi-shop fs-1 text-warning"></i>
+                <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
+            </div>
 
-            <div class="form-floating">
+            <!-- Input email -->
+            <div class="form-floating mb-3">
                 <input name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                 <label for="floatingInput">Alamat Email</label>
                 <div class="invalid-feedback">
                     Masukkan email yang valid.
                 </div>
             </div>
-            <div class="form-floating">
+
+            <!-- Input password -->
+            <div class="form-floating mb-3">
                 <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Kata Sandi</label>
                 <div class="invalid-feedback">
@@ -193,13 +190,20 @@
                 </div>
             </div>
 
+            <!-- Checkbox untuk "Ingat Saya" -->
             <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Ingat Saya
                 </label>
             </div>
+            <!-- Tombol login -->
             <button class="btn btn-warning w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; <?php echo date("Y") ?> </p>
+            <p class="mt-5 mb-3 text-muted text-center">User Admin: aburijal@gmail.com <n>Password  : aburijal23</n></p>
+            <p class="mt-5 mb-3 text-muted text-center">User Pengguna: rijal@gmail.com <n>Password  : password</n> </p>
+            <p class="mt-5 mb-3 text-muted text-center">User Pengelola kantin: asep@gmail.com <n>Password  : password</n></p>
+            <p class="mt-5 mb-3 text-muted text-center">User Kasir: andi@gmail.com <n>Password  : password</n></p>
         </form>
     </main>
 
@@ -211,7 +215,7 @@
             // Ambil semua formulir yang ingin kita terapkan gaya validasi Bootstrap kustom
             const forms = document.querySelectorAll('.needs-validation')
 
-            // Loop melalui formulir dan cegah pengiriman
+            // Loop melalui formulir dan cegah pengiriman jika tidak valid
             Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
                     if (!form.checkValidity()) {

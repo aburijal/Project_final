@@ -1,19 +1,20 @@
 <?php
 include "proses/connect.php";
 $query = mysqli_query($conn, "SELECT * FROM tb_user");
+$result = [];
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 ?>
 <div class="col-lg-9 rounded mt-2">
-    <div class="card">
-        <div class="card-header">
-            Halaman User
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white">
+        <h4 class="mb-0">Halaman User</h4>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"> Tambah Data User</button>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah Data User</button>
                 </div>
             </div>
             <!-- Modal tambah data user-->
@@ -21,7 +22,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data User</h1>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -29,14 +30,13 @@ while ($record = mysqli_fetch_array($query)) {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" required>
-                                            <label for="floatingInput">Nama </label>
+                                            <input type="text" class="form-control" id="floatingInput" placeholder="Nama" name="nama" required>
+                                            <label for="floatingInput">Nama</label>
                                             <div class="invalid-feedback">
                                                 Masukkan Nama.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required>
@@ -45,7 +45,6 @@ while ($record = mysqli_fetch_array($query)) {
                                                 Masukkan Username.
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -75,24 +74,22 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="col-lg-12">
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control" id="floatingInput" placeholder="Password" disabled value="12345" name="password">
-                                            <label for="floatingPassword">Password </label>
+                                            <label for="floatingPassword">Password</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Tambah Data User</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- akhir Modal tambah data user-->
+            <!-- Akhir Modal tambah data user-->
 
-            <?php
-            foreach ($result as $row) {
-            ?>
+            <?php foreach ($result as $row) { ?>
                 <!-- Modal view-->
                 <div class="modal fade" id="ModalView<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
@@ -106,8 +103,8 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" value="<?php echo $row['nama'] ?>">
-                                                <label for="floatingInput">Nama </label>
+                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Nama" name="nama" value="<?php echo $row['nama'] ?>">
+                                                <label for="floatingInput">Nama</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan Nama.
                                                 </div>
@@ -159,7 +156,7 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                 </div>
-                <!-- akhir Modal view-->
+                <!-- Akhir Modal view-->
 
                 <!-- Modal Edit-->
                 <div class="modal fade" id="ModalEdit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,8 +172,8 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" required value="<?php echo $row['nama'] ?>">
-                                                <label for="floatingInput">Nama </label>
+                                                <input type="text" class="form-control" id="floatingInput" placeholder="Nama" name="nama" required value="<?php echo $row['nama'] ?>">
+                                                <label for="floatingInput">Nama</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan Nama.
                                                 </div>
@@ -184,7 +181,7 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input <?php echo ($row['username'] == $_SESSION['username_kantinkampus']) ? 'disabled' : '' ; ?> type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required value="<?php echo $row['username'] ?>">
+                                                <input <?php echo ($row['username'] == $_SESSION['username_kantinkampus']) ? 'disabled' : ''; ?> type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required value="<?php echo $row['username'] ?>">
                                                 <label for="floatingInput">Username</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan Username.
@@ -200,9 +197,9 @@ while ($record = mysqli_fetch_array($query)) {
                                                     $data = array("Admin", "Pengelola Kantin", "Mahasiswa dan Staf", "Kasir");
                                                     foreach ($data as $key => $value) {
                                                         if ($row['level'] == $key + 1) {
-                                                            echo "<option selevted value=".($key+1).">$value</option>";
+                                                            echo "<option selected value='$key'>$value</option>";
                                                         } else {
-                                                            echo "<option value=".($key+1).">$value</option>";
+                                                            echo "<option value='$key'>$value</option>";
                                                         }
                                                     }
                                                     ?>
@@ -221,47 +218,40 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Edit</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- akhir Modal Edit-->
+                <!-- Akhir Modal Edit-->
 
-                <!-- Modal Delete-->
-                <div class="modal fade" id="ModalDelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-md modal-fullscreen-md-down">
+                <!-- Modal Hapus -->
+                <div class="modal fade" id="ModalHapus<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data User</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data User</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" novalidate action="proses/proses_delete_user.php" method="POST">
+                                <form action="proses/proses_hapus_user.php" method="POST">
                                     <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
-                                    <div class="col-lg-12">
-                                        <?php 
-                                        if($row['username'] == $_SESSION['username_kantinkampus']){
-                                            echo "<div class='alert alert-danger'>Anda tidak dapat menghapus akun sendiri</div>";
-                                        }else{
-                                            echo "Apakah anda yakin ingin menghapus Data <b> $row[username]</b>";
-                                        }
-                                        ?>
-                                            
-                                    </div>
+                                    <h5 class="text-center">Apakah anda yakin akan menghapus data ini?<br>
+                                        <span class="text-danger"><?php echo $row['nama'] ?></span>
+                                    </h5>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_kantinkampus']) ? 'disabled' : '' ; ?>>Delete</button>
+                                        <button type="submit" class="btn btn-danger" name="hapus_data_user">Delete</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- akhir Modal Delete-->
+                <!-- Akhir Modal Hapus -->
 
                 <!-- Modal Reset Password-->
                 <div class="modal fade" id="ModalResetPassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -295,64 +285,44 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
                 <!-- akhir Modal Reset Password-->
 
-            <?php
-            }
-            if (empty($result)) {
-                echo "Data user Tidak Ada";
-            } else {
+            <?php } ?>
 
-            ?>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
+            <!-- Tabel Data -->
+            <div class="table-responsive mt-2">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Level</th>
+                            <th>No Hp</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($result as $row) {
+                        ?>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Level</th>
-                                <th scope="col">Nomor Hp</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            foreach ($result as $row) {
-                            ?>
-                                <tr>
-                                    <th scope="row"><?php echo $no++ ?></th>
-                                    <td><?php echo $row['nama'] ?></td>
-                                    <td><?php echo $row['username'] ?></td>
-                                    <td><?php
-                                        if ($row['level'] == 1) {
-                                            echo 'Admin';
-                                        } elseif ($row['level'] == 2) {
-                                            echo 'Pengelola Kantin';
-                                        } elseif ($row['level'] == 3) {
-                                            echo 'Mahasiswa dan Staf';
-                                        } elseif ($row['level'] == 4) {
-                                            echo 'Kasir';
-                                        }
-                                        ?>
-                                    <td><?php echo $row['nohp'] ?></td>
-                                    <td class="d-flex">
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $row['nama'] ?></td>
+                                <td><?php echo $row['username'] ?></td>
+                                <td><?php echo ["Admin", "Pengelola Kantin", "Mahasiswa dan Staf", "Kasir"][$row['level'] - 1] ?></td>
+                                <td><?php echo $row['nohp'] ?></td>
+                                <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id'] ?>"><i class="bi bi-eye-fill"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id'] ?>"><i class="bi bi-pencil-square"></i></i></button>
                                         <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id'] ?>"><i class="bi bi-trash-fill"></i></button>
                                         <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalResetPassword<?php echo $row['id'] ?>"><i class="bi bi-key-fill"></i></button>
-
                                     </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Akhir Tabel Data -->
         </div>
-    <?php
-            }
-    ?>
     </div>
-</div>
 </div>
